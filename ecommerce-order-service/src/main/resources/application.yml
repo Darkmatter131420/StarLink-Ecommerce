@@ -1,0 +1,37 @@
+server:
+  port: 8084
+
+ecommerce:
+  database:
+    host: @database.host@
+    port: @database.port@
+    user: @database.user@
+    pwd: @database.pwd@
+    table: db_order
+  knife4j:
+    title: 下单服务
+    description: 下单服务
+  sentinel:
+    dashboard: @sentinel.dashboard@
+  nacos:
+    dashboard: @nacos.dashboard@
+  redis:
+    cluster-addr: @redis.cluster-addr@
+    expire-hour: 4
+  rabbitmq:
+    host: @rabbitmq.host@
+    port: @rabbitmq.port@
+    virtual: /
+    user: @rabbitmq.user@
+    pwd: @rabbitmq.pwd@
+#    queue:
+#      order: "order.queue"
+#      dlx: "order.dlx.queue"
+#    exchange:
+#      order: "order.exchange"
+#      dlx: "order.dlx.exchange"
+#    routing-key:
+#      order:
+#        create: "order.create"
+#      dlx:
+#        cancel: "order.cancel"

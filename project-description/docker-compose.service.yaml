@@ -1,0 +1,103 @@
+services:
+  ecommerce-gateway:
+    container_name: ecommerce-gateway
+    build:
+      context: ../ecommerce-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - ecommerce
+
+  ecommerce-user-service:
+    container_name: ecommerce-user-service
+    build:
+      context: ../ecommerce-user-service
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - ecommerce
+    depends_on:
+      - ecommerce-gateway
+
+  ecommerce-product-service:
+    container_name: ecommerce-product-service
+    build:
+      context: ../ecommerce-product-service
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    networks:
+      - ecommerce
+    depends_on:
+      - ecommerce-gateway
+      - ecommerce-user-service
+
+  ecommerce-cart-service:
+    container_name: ecommerce-cart-service
+    build:
+        context: ../ecommerce-cart-service
+        dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    networks:
+      - ecommerce
+    depends_on:
+      - ecommerce-gateway
+      - ecommerce-user-service
+
+  ecommerce-order-service:
+    container_name: ecommerce-order-service
+    build:
+      context: ../ecommerce-order-service
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8084"
+    networks:
+      - ecommerce
+    depends_on:
+      - ecommerce-gateway
+      - ecommerce-user-service
+
+  ecommerce-checkout-service:
+    container_name: ecommerce-checkout-service
+    build:
+        context: ../ecommerce-checkout-service
+        dockerfile: Dockerfile
+    ports:
+        - "8085:8085"
+    networks:
+        - ecommerce
+    depends_on:
+        - ecommerce-gateway
+        - ecommerce-user-service
+
+  ecommerce-payment-service:
+    container_name: ecommerce-payment-service
+    build:
+        context: ../ecommerce-payment-service
+        dockerfile: Dockerfile
+    ports:
+        - "8086:8086"
+    networks:
+        - ecommerce
+    depends_on:
+        - ecommerce-gateway
+        - ecommerce-user-service
+
+  ecommerce-ai-service:
+    container_name: ecommerce-ai-service
+    build:
+        context: ../ecommerce-ai-service
+        dockerfile: Dockerfile
+    ports:
+        - "8087:8087"
+    networks:
+        - ecommerce
+    depends_on:
+        - ecommerce-gateway
+        - ecommerce-user-service
+networks:
+  ecommerce:
+    name: ecommerce

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: prod
+  cloud:
+    nacos:
+      server-addr: @nacos.dashboard@
+      config:
+        file-extension: yaml
+        shared-configs:
+          - dataId: jdbc-config.yaml
+          - dataId: log-config.yaml
+          - dataId: knife4j-config.yaml
+          - dataId: feign-config.yaml
+          - dataId: sentinel-config.yaml
+          - dataId: seata-config.yaml
+          - dataId: redis-config.yaml
+          - dataId: rabbitmq-config.yaml
+          - dataId: mq-queues-config.yaml
+        group: DEFAULT_GROUP

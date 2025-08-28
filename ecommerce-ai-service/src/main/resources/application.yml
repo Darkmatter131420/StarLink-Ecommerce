@@ -1,0 +1,33 @@
+server:
+  port: 8087
+
+ecommerce:
+  database:
+    host: @database.host@
+    port: @database.port@
+    user: @database.user@
+    pwd: @database.pwd@
+    table: db_cart
+  knife4j:
+    title: AI服务
+    description: AI服务
+  sentinel:
+    dashboard: @sentinel.dashboard@
+  nacos:
+    dashboard: @nacos.dashboard@
+  redis:
+    cluster-addr: @redis.cluster-addr@
+    expire-hour: 4
+  rabbitmq:
+    host: @rabbitmq.host@
+    port: @rabbitmq.port@
+    virtual: /
+    user: @rabbitmq.user@
+    pwd: @rabbitmq.pwd@
+spring:
+  ai:
+    zhipuai:
+      api-key: <!-- 你的智谱 AI API Key --!>
+      options: # 模型参数
+        model: glm-4-air # 模型名称，使用智谱 AI 哪个模型
+        temperature: 0.7 # 温度值
