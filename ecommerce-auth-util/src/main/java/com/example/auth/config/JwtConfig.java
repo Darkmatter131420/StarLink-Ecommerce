@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Data
 @ConfigurationProperties(prefix = "ecommerce.jwt")
 public class JwtConfig {
-    private String key;
-    private Integer expireHour;
-    private Integer refreshExpireDay;
+    private String key = "ecommerce-2025";
+    private Integer expireHour = 24;
+    private Integer refreshExpireDay = 3;
 }

@@ -19,6 +19,7 @@ import com.example.user.mapper.UserMapper;
 import com.example.user.service.UserService;
 import com.example.auth.util.BCryptUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,7 @@ import java.time.LocalDateTime;
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     private final UserMapper userMapper;
@@ -79,9 +81,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         User user = findEnabledUser(loginDto.getEmail());
         if(user == null) {
             // 用户不存在
+            log.error("用户不存在");
             return null;
         }
         if(bCryptUtil.matches(loginDto.getPassword().trim(), user.getPassword())) {
+            log.info("密码正确" + user.getPassword());
             return user;
         } else {
             return null;

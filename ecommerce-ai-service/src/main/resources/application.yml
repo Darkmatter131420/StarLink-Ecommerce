@@ -27,7 +27,11 @@ ecommerce:
 spring:
   ai:
     zhipuai:
-      api-key: <!-- 你的智谱 AI API Key --!>
       options: # 模型参数
         model: glm-4-air # 模型名称，使用智谱 AI 哪个模型
         temperature: 0.7 # 温度值
+
+
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: DEBUG
